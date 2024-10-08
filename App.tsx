@@ -72,7 +72,7 @@ function HomeScreen() {
       <Text style={styles.heading}>ADD DISH</Text>
 
       <View>
-        <Text style={styles.totalDish}>Total: {totalMenuItems}</Text>
+        <Text style={styles.totalDish}>Total Items: {totalMenuItems}</Text>
       </View>
       <View>
         <Text style={styles.subHeading}>Menu</Text>
