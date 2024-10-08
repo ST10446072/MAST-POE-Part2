@@ -2,7 +2,7 @@ import * as React from 'react';
 import { View, Text, TextInput, FlatList, TouchableHighlight, Alert, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker'; // Updated import for Picker
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 interface Course {
@@ -18,7 +18,6 @@ interface Dish {
 }
 
 function HomeScreen() {
-
   const courseList: Course[] = [
     { id: 1, courseName: 'Hors D Oeuvre' },
     { id: 2, courseName: 'Amuse-Bouche' },
@@ -59,55 +58,66 @@ function HomeScreen() {
 
     const newDish: Dish = { name: theName, description: theDescription, price: thePrice, course: theCourse };
     setDishList((prevDishList) => [...prevDishList, newDish]);
+    // Clear input fields after saving
+    setName('');
+    setDescription('');
+    setPrice('');
+    setCourse('');
   };
 
   return (
-    <View>
-      <View>
-        <Text>ADD DISH</Text>
-      </View>
+    <View style={styles.container}>
+      <Text style={styles.heading}>ADD DISH</Text>
 
       <View>
-        {/* Input */}
-        <TextInput
-          placeholder='Enter Dish Name'
-          onChangeText={setName}
-          value={name}
-        />
-        <TextInput
-          placeholder='Enter Dish Description'
-          onChangeText={setDescription}
-          value={description}
-        />
-        <TextInput
-          placeholder='Enter Dish Price'
-          onChangeText={setPrice}
-          value={price}
-          keyboardType="numeric"
-        />
-        <Picker
-          onValueChange={(itemValue) => { setCourse(itemValue); }}
-          selectedValue={course}
-        >
-          {courseList.map((item) => (
-            <Picker.Item label={item.courseName} value={item.courseName} key={item.id} />
-          ))}
-        </Picker>
+        <Text style={styles.subHeading}>Menu</Text>
+        {dishList.map((dish, index) => (
+          <Text key={index}>
+            {dish.name} - {dish.description} - R{dish.price.toFixed(2)} - {dish.course}
+          </Text>
+        ))}
       </View>
 
-      <View>
-        {/* Buttons */}
-        <TouchableHighlight onPress={handleSaveDish}>
-          <Text>SAVE</Text>
-        </TouchableHighlight>
-      </View>
+      <TextInput
+        style={styles.input}
+        placeholder='Enter Dish Name'
+        onChangeText={setName}
+        value={name}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder='Enter Dish Description'
+        onChangeText={setDescription}
+        value={description}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder='Enter Dish Price'
+        onChangeText={setPrice}
+        value={price}
+        keyboardType="numeric"
+      />
+      <Picker
+        onValueChange={(itemValue) => { setCourse(itemValue); }}
+        selectedValue={course}
+        style={styles.picker}
+      >
+        <Picker.Item label="Select a Course" value="" />
+        {courseList.map((item) => (
+          <Picker.Item label={item.courseName} value={item.courseName} key={item.id} />
+        ))}
+      </Picker>
+
+      <TouchableHighlight style={styles.button} onPress={handleSaveDish}>
+        <Text style={styles.buttonText}>SAVE</Text>
+      </TouchableHighlight>
     </View>
   );
-};
+}
 
 function EnterScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={styles.screenContainer}>
       <Text>Menu Creator!</Text>
     </View>
   );
@@ -115,7 +125,7 @@ function EnterScreen() {
 
 function MenuScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={styles.screenContainer}>
       <Text>View Menu!</Text>
     </View>
   );
@@ -140,3 +150,39 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+  },
+  heading: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  subHeading: {
+    fontSize: 18,
+    marginVertical: 10,
+  },
+  input: {
+    borderWidth: 1,
+    padding: 10,
+    marginVertical: 10,
+  },
+  picker: {
+    marginVertical: 10,
+  },
+  button: {
+    backgroundColor: 'blue',
+    padding: 10,
+    marginVertical: 10,
+  },
+  buttonText: {
+    color: 'white',
+    textAlign: 'center',
+  },
+  screenContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
