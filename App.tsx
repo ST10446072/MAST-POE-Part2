@@ -158,16 +158,19 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     padding: 20,
   },
   heading: {
     fontSize: 24,
-    color: 'white',
+    backgroundColor: '#FB2943',
+    color: 'black',
     fontWeight: 'bold',
   },
   totalDish: {
-    color: 'white',
+    color: 'black',
+    backgroundColor: '#FB2943',
+    fontSize: 18,
   },
   subHeading: {
     fontSize: 22,
@@ -176,14 +179,14 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     textAlign:  'center',
     textDecorationLine: 'underline',
-    color: 'white',
+    color: 'black',
     marginVertical: 10,
   },
   input: {
     borderWidth: 0,
     borderRadius: 10,
     marginTop: 30,
-    backgroundColor: 'gray',
+    backgroundColor: '#FB2943',
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
@@ -192,11 +195,11 @@ const styles = StyleSheet.create({
   },
 
   inputText: {
-    color: 'white',
+    color: 'black',
   },
 
   dishColor: {
-    color: 'white',
+    color: 'black',
     fontWeight: 'bold',
     textAlign:  'center',
     marginTop: 15,
@@ -205,21 +208,21 @@ const styles = StyleSheet.create({
 
   picker: {
     marginTop: 30,
-    backgroundColor: 'gray',
+    backgroundColor: 'red',
     color: 'white',
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
     marginVertical: 10,
   },
   button: {
-    backgroundColor: 'gold',
+    backgroundColor: '#FB2943',
     borderRadius: 10,
     marginTop: 20,
     padding: 10,
     marginVertical: 10,
   },
   buttonText: {
-    color: 'black',
+    color: 'white',
     textAlign: 'center',
   },
   screenContainer: {
