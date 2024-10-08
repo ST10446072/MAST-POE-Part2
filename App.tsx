@@ -72,7 +72,7 @@ function HomeScreen() {
       <View>
         <Text style={styles.subHeading}>Menu</Text>
         {dishList.map((dish, index) => (
-          <Text key={index}>
+          <Text style={styles.dishColor }key={index}>
             {dish.name} - {dish.description} - R{dish.price.toFixed(2)} - {dish.course}
           </Text>
         ))}
@@ -153,31 +153,64 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'black',
     padding: 20,
   },
   heading: {
     fontSize: 24,
+    color: 'white',
     fontWeight: 'bold',
   },
   subHeading: {
-    fontSize: 18,
+    fontSize: 22,
+    marginTop: 30,
+    marginBottom: 30,
+    textAlign:  'center',
+    textDecorationLine: 'underline',
+    color: 'white',
     marginVertical: 10,
   },
   input: {
-    borderWidth: 1,
+    borderWidth: 0,
+    borderRadius: 10,
+    marginTop: 30,
+    backgroundColor: 'gray',
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
     padding: 10,
     marginVertical: 10,
   },
+
+  inputText: {
+    color: 'white',
+  },
+
+  dishColor: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign:  'center',
+    marginTop: 15,
+    fontSize: 19,
+  },
+
   picker: {
+    marginTop: 30,
+    backgroundColor: 'gray',
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
     marginVertical: 10,
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: 'gold',
+    borderRadius: 10,
+    marginTop: 20,
     padding: 10,
     marginVertical: 10,
   },
   buttonText: {
-    color: 'white',
+    color: 'black',
     textAlign: 'center',
   },
   screenContainer: {
