@@ -2,7 +2,7 @@ import * as React from 'react';
 import { View, Text, TextInput, FlatList, TouchableHighlight, Alert, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker'; // Updated import for Picker
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 interface Course {
@@ -39,6 +39,8 @@ function HomeScreen() {
   const [course, setCourse] = useState<string>('');
   const [dishList, setDishList] = useState<Dish[]>([]);
 
+  const totalMenuItems = useMemo(() => dishList.length, [dishList]);
+
   const handleSaveDish = (): void => {
     const theName = name;
     const theDescription = description;
@@ -69,6 +71,9 @@ function HomeScreen() {
     <View style={styles.container}>
       <Text style={styles.heading}>ADD DISH</Text>
 
+      <View>
+        <Text style={styles.totalDish}>Total: {totalMenuItems}</Text>
+      </View>
       <View>
         <Text style={styles.subHeading}>Menu</Text>
         {dishList.map((dish, index) => (
@@ -161,8 +166,12 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
+  totalDish: {
+    color: 'white',
+  },
   subHeading: {
     fontSize: 22,
+    height: 200,
     marginTop: 30,
     marginBottom: 30,
     textAlign:  'center',
